@@ -1,0 +1,29 @@
+name: ML Docker Pipeline
+on:
+  push:
+    branches:
+     [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Build docker image
+        run: docker build ml-project .
+      
+  run-pipeline:
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+      - name: pythonversion
+        uses: actions/set-python@v5
+        with:
+          python-version: "3.10"
+      
+      - name: Run container
+        run: docker run ml-project
+      
+      - name: Upload model
+        run: python upload_model.py
