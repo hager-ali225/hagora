@@ -9,12 +9,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
         
+      -  name: Checkout r
+         run: |
+             pip install requirements.txt .
+
+      - name: Checkout rep
+        run: dockerfile
       - name: Build docker image
-        uses: actions/build-docker@v4
-        with:
-        name:ml-project
+        run: docker build ml-project .
+
   run-pipeline:
       needs: build
       runs-on: ubuntu-latest
