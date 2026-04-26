@@ -12,7 +12,7 @@ jobs:
         
       - name: Checkout r
         run: |
-         pip  install torch flake8 .
+             install torch flake8 .
 
       - name: Checkout rep
         run: dockerfile
