@@ -10,7 +10,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      
+      - name: Checkout r
+        run: |
+         pip  install torch flake8 .
+
+      - name: Checkout rep
+        run: dockerfile
+        
+      - name: Build docker image
+        run: docker build ml-project .
+
   run-pipeline:
       needs: build
       runs-on: ubuntu-latest
