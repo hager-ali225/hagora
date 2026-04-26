@@ -10,7 +10,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Checkout repository
-        uses: actions/upload-dokerfile@v4
+        run: dockerfile
       - name: Build docker image
         run: docker build ml-project .
       
